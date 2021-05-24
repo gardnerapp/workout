@@ -1,0 +1,33 @@
+<div class="h-full">
+  <div class="flex mt-to justify-center self-center">
+    <div class="w-full  max-w-full">
+      <div class="bg-white shadow-md rounded px-8 pt-6 ">
+        <h2 class="text-center mb-4 font-semibold text-lg"> Lets Get Fit</h2>
+        <%= form_for @inquiry, url: inquiry_index_path do |f| %>
+          <% if @inquiry.errors.any? %>
+            <%= render 'layouts/shared_errors', object: @inquiry %>
+            <% end %>
+            <div class="mb-4">
+              <%= f.label :name, class: "block text-gray-700 text-sm font-bold" %>
+              <%= f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", autofocus: true, autocomplete: "name"  %>
+            </div>
+
+            <div class="mb-4">
+              <%= f.label :email, class: "block text-gray-700 text-sm font-bold" %>
+              <%= f.text_field :email, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", autofocus: true, autocomplete: "name"  %>
+            </div>
+
+            <div class="mb-4">
+              <%= f.label "My Goals", class: "block text-gray-700 text-sm font-bold" %>
+              <%= f.text_area :goals, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", autofocus: true, autocomplete: "name"  %>
+            </div>
+
+            <div class="mb-6 grid grid-cols-1 flex justify-between items-center">
+              <%= f.submit "Get Started", class: "inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700" %>
+            </div>
+          <% end  %>
+      </div>
+    </div>
+  </div>
+</div>
+

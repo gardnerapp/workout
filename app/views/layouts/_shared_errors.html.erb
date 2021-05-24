@@ -1,0 +1,11 @@
+<div class="bg-red-200">
+  <h2 class="p-2 font-medium">
+    <%= pluralize(object.errors.count, "error") %>
+    prohibited this <%= object.class %> from being saved:
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li class="p-2 font-bold"><%= message  %></li>
+      <% end %>
+    </ul>
+  </h2>
+</div>
