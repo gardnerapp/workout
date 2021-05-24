@@ -1,14 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="py-12 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:text-center">
+      <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase"><%= @video.title %></h2>
+      <p class="mt-4 max-w-2xl lg:mx-auto">
+      <div class="inline-flex rounded-md shadow">
+        <%= link_to "Edit Video", edit_video_path(@video), class: "inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700" %>
+      </div>
+      <div class="ml-3 inline-flex rounded-md shadow">
+        <%= link_to "Delete Video",root_path, class: "inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-red-600 bg-white hover:bg-red-50" %>
+      </div>
+      </p>
+    </div>
+    <div class="mt-6 px-3 py-3">
+      <%= video_tag url_for(@video.video)%>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @video.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @video.description %>
-</p>
-
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
