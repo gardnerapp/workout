@@ -7,8 +7,10 @@ class InquiryController < ApplicationController
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
       @inquiry.send_mail
-      flash[:success] = 'Thank You for getting in touch ! We will get in touch with you shortly'
+      flash[:success] = 'Thank You! We will get in touch with you shortly'
       redirect_to root_path
+    else
+      render :new
     end
   end
 
