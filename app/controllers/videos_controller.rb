@@ -2,7 +2,8 @@ class VideosController < ApplicationController
   before_action :set_video, only: %i[ show edit update destroy ]
 
   # GET /videos or /videos.json
-  # todo paginate
+  # todo paginate, add sthumbnail to video => prevents video from being played in index
+  # sho is aonly available to memebrs 
   def index
     @videos = Video.all
   end
@@ -23,20 +24,19 @@ class VideosController < ApplicationController
   # POST /videos or /videos.json
   def create
     @video = Video.new(video_params)
-
-      if @video.save
-        flash[:success] = 'Video was successfully created.'
-        redirect_to @video
-      else
-       render :new, status: :unprocessable_entity 
-      end
+    if @video.save
+      flash[:success] = 'Video was successfully created.'
+      redirect_to videos_path
+    else
+     render :new, status: :unprocessable_entity 
+    end
   end
 
   # PATCH/PUT /videos/1 or /videos/1.json
   def update
       if @video.update(video_params)
         flash[:success] = 'Video was succesfully updated'
-        redirect_to @video
+        redirect_to videos_path
       else 
         render :edit, status: :unprocessable_entity 
       end
@@ -46,7 +46,7 @@ class VideosController < ApplicationController
   def destroy
     # TODO flash confirmation
     @video.destroy
-      redirect_to videos_url, notice: 'Video was successfully destroyed.'
+    redirect_to videos_url, notice: 'Video was successfully destroyed.'
   end
 
   private
