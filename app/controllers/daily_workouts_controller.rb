@@ -20,4 +20,5 @@ class DailyWorkoutsController < ApplicationController
 
 end
 
-
+#todo align table in center under daily Workout title, wrap focus in if statement ( in case its left out ), remove margin/padding
+# under the carousel then begin file uploads
