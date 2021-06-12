@@ -1,24 +1,37 @@
-<div>
-  <div class="md:grid md:grid-cols-3 md:gap-6">
-    <div class="md:col-span-1">
-      <div class="px-4 sm:px-0">
-          <button id=”addLift” class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">Add another lift</button>
-      </div>
-    </div>
-    <div class="mt-5 md:mt-0 md:col-span-2">
+<div class="h-full">
+  <div class="flex mt-10 justify-center self-center">
+    <div class="w-full max-w-xs">
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <%= simple_form_for @daily_workout do |f| %>
-        <%= f.input :focus, class: "focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" %>
-        <%= f.simple_fields_for :workouts do |w| %>
+        <%= f.input :focus,  input_html: { class: "focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" } %>
+          <%= f.simple_fields_for :workouts do |w| %>
           <div id='fieldsetContainer'>
-            <fieldset id="0">
-              <%= w.input :lift %>
-              <%= w.input :sets %>
-              <%= w.input :reps %>
-            </fieldset>
-          </div>
+            <fieldset id="0" class="text-indigo-500">
+              <%= w.input :lift, input_html: { class: "focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" } %>
+              <%= w.input :sets, input_html: { class: "focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" } %>
+              <%= w.input :reps, input_html: { class: "focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" } %>
         <% end %>
-        <%= f.button :submit, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" %>
+        </fieldset>
+        </div>
+          <%= f.button :submit, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" %>
       <% end %>
+      <br/>
+      <button id=”addWorkout” onclick="addWorkout()" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full">Add another lift</button>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+    const addWorkout = ()=> {
+            const lastId = document.querySelector('#fieldsetContainer').lastElementChild.id;
+            console.log(lastId)
+
+            const newId = parseInt(lastId,10) + 1
+            console.log(newId)
+
+            const newFieldset = document.querySelector('[id="0"]').outerHTML.replace(/0/g, newId)
+            console.log(newFieldset)
+            document.querySelector("#fieldsetContainer").insertAdjacentHTML("beforeend", newFieldset)
+    }
+</script>

@@ -64,3 +64,4 @@ end
 
 gem 'simple_form'
 gem 'annotate'
+gem 'simple_form-tailwind'

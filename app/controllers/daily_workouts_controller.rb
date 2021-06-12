@@ -2,7 +2,7 @@ class DailyWorkoutsController < ApplicationController
 
   def new
     @daily_workout = DailyWorkout.new
-    @daily_workout.workouts.build; @daily_workout.workouts.build
+    @daily_workout.workouts.build
   end
 
   def create
@@ -19,3 +19,5 @@ class DailyWorkoutsController < ApplicationController
   end
 
 end
+
+
