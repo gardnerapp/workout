@@ -7,6 +7,13 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import {addWorkout} from './addWorkout'
+
+document.addEventListener('turbolinks:load', () => {
+    if (document.querySelector('#fieldsetContainer')){
+        addWorkout()
+    }
+})
 
 Rails.start()
 Turbolinks.start()

@@ -61,3 +61,6 @@ gem "tailwindcss-rails", "~> 0.3.3"
 group :production do
   gem 'pg'
 end
+
+gem 'simple_form'
+gem 'annotate'

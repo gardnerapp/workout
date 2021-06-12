@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_180241) do
+ActiveRecord::Schema.define(version: 2021_06_12_131212) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 2021_05_24_180241) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "daily_workouts", force: :cascade do |t|
+    t.string "focus"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "inquiries", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -54,6 +60,17 @@ ActiveRecord::Schema.define(version: 2021_05_24_180241) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "workouts", force: :cascade do |t|
+    t.string "lift"
+    t.integer "sets"
+    t.integer "reps"
+    t.integer "daily_workout_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["daily_workout_id"], name: "index_workouts_on_daily_workout_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "workouts", "daily_workouts"
 end
