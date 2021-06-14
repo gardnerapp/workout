@@ -185,6 +185,15 @@
     <label for="carousel-2" class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
     <label for="carousel-1" class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
 
+    <div class="carousel-indicators mb-10">
+      <% if @monthly_workout %>
+        <button class="inline-flex items-center justify-center px-5 py-3 border
+        border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+          One Month Of Free Workouts
+        </button>
+      <% end %>
+    </div>
+
     <!-- Add additional indicators for each slide-->
     <ol class="carousel-indicators">
       <li class="inline-block mr-3">
@@ -200,11 +209,6 @@
 
   </div>
 </div>
-
-
-
-
-
 
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="bg-gray-50">
