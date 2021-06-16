@@ -18,4 +18,6 @@ class Inquiry < ApplicationRecord
     InquiryMailer.with(inquiry: self).inquiry_mail.deliver_now
   end
 
+
+
 end
