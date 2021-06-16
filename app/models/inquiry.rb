@@ -15,7 +15,7 @@ class Inquiry < ApplicationRecord
   validates :goals, presence: true
 
   def send_mail
-    # julios email, with model
+    InquiryMailer.with(inquiry: self).inquiry_mail.deliver_now
   end
 
 end
